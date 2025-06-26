@@ -1,0 +1,72 @@
+<div class="container mt-5" style="padding-bottom: 20px">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <h3 class="header-style">Register New User</h3>
+
+    <div class="mb-3">
+      <label class="form-label">Name *</label>
+      <input id="form-name" class="form-control" type="text" formControlName="name" />
+      @if(registerForm.get('name')?.touched &&
+      registerForm.get('name')?.hasError('required')) {
+      <div class="text-danger mt-1">Field is required.</div>
+      } @if(registerForm.get('name')?.hasError('maxlength')) {
+      <div class="text-danger mt-1">Maximum 20 characters allowed.</div>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Surname *</label>
+      <input id="form-surname" class="form-control" type="text" formControlName="surname" />
+      @if(registerForm.get('surname')?.touched &&
+      registerForm.get('surname')?.hasError('required')) {
+      <div class="text-danger mt-1">Field is required.</div>
+      } @if(registerForm.get('surname')?.hasError('maxlength')) {
+      <div class="text-danger mt-1">Maximum 20 characters allowed.</div>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Gender *</label>
+      <select id="form-gender" class="form-control" formControlName="gender">
+        <option value="">Select Gender</option>
+        <option value="M">Male</option>
+        <option value="F">Female</option>
+      </select>
+      @if(registerForm.get('gender')?.touched &&
+      registerForm.get('gender')?.hasError('required')) {
+      <div class="text-danger mt-1">Field is required.</div>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Birthdate *</label>
+      <input id="form-birthdate" class="form-control" type="date" formControlName="birthdate" />
+      @if(registerForm.get('birthdate')?.touched &&
+      registerForm.get('birthdate')?.hasError('required')) {
+      <div class="text-danger mt-1">Field is required.</div>
+      }
+      @if(registerForm.get('birthdate')?.hasError('futureDate')) {
+      <div class="text-danger mt-1">Past or present date required.</div>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Work Address</label>
+      <textarea id="form-workAddress" class="form-control" formControlName="workAddress"></textarea>
+      @if(registerForm.get('workAddress')?.hasError('maxlength')) {
+      <div class="text-danger mt-1">Maximum 100 characters allowed.</div>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Home Address</label>
+      <textarea id="form-homeAddress" class="form-control" formControlName="homeAddress"></textarea>
+      @if(registerForm.get('homeAddress')?.hasError('maxlength')) {
+      <div class="text-danger mt-1">Maximum 100 characters allowed.</div>
+      }
+    </div>
+
+    <button id="button-submit" class="btn btn-primary" [disabled]="registerForm.invalid">
+      Submit
+    </button>
+  </form>
+</div>

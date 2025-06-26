@@ -1,0 +1,37 @@
+services:
+  mysql:
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+    ports:
+      - "${DB_LOCAL_PORT}:${DB_CONTAINER_PORT}"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  backend:
+    build: ./backend
+    ports:
+      - "${BACKEND_LOCAL_PORT}:${BACKEND_CONTAINER_PORT}"
+      - "${LOCALHOST}:${BACKEND_DEBUGGER_LOCAL_PORT}:${BACKEND_DEBUGGER_CONTAINER_PORT}"
+    volumes:
+      - ./backend:/backend
+      - ~/.m2:/root/.m2
+    command: mvn spring-boot:run -Dspring-boot.run.jvmArguments="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:${BACKEND_DEBUGGER_CONTAINER_PORT}"
+    depends_on:
+      - mysql
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "${FRONTEND_LOCAL_PORT}:${FRONTEND_CONTAINER_PORT}"
+    volumes:
+      - ./frontend:/frontend
+      - /frontend/node_modules
+    command: npm run start -- --host 0.0.0.0
+    depends_on:
+      - backend
+
+volumes:
+  mysql-data:

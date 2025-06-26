@@ -1,0 +1,78 @@
+<div class="mb-3">
+  <div class="modal-style">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Surname</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Birthdate</th>
+          <th scope="col">Work Address</th>
+          <th scope="col">Home Address</th>
+        </tr>
+      </thead>
+      <tbody [formGroup]="userForm">
+        <tr>
+          @if (editMode) {
+          <td><input id="modal-form-input-name" class="form-control" formControlName="name" /></td>
+          <td><input id="modal-form-input-surname" class="form-control" formControlName="surname" /></td>
+          <td>
+            <select id="modal-form-input-gender" class="form-control" formControlName="gender">
+              <option value="M">M</option>
+              <option value="F">F</option>
+            </select>
+          </td>
+          <td>
+            <input id="modal-form-input-birthdate" class="form-control" formControlName="birthdate" type="date" />
+          </td>
+          <td><input id="modal-form-input-workAddress" class="form-control" formControlName="workAddress" /></td>
+          <td><input id="modal-form-input-homeAddress" class="form-control" formControlName="homeAddress" /></td>
+          } @else {
+          <td id="modal-form-name">{{ user.name }}</td>
+          <td id="modal-form-surname">{{ user.surname }}</td>
+          <td id="modal-form-gender">{{ user.gender }}</td>
+          <td id="modal-form-birthdate">{{ user.birthdate }}</td>
+          <td id="modal-form-workAddress">{{ user.workAddress }}</td>
+          <td id="modal-form-homeAddress">{{ user.homeAddress }}</td>
+          }
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="error-messages-container">
+    @if(userForm.get('name')?.hasError('required')) {
+    <div class="text-danger">* Name is required.</div>
+    } @if(userForm.get('surname')?.hasError('required')) {
+    <div class="text-danger">* Surname is required.</div>
+    } @if(userForm.get('birthdate')?.hasError('required')) {
+    <div class="text-danger">* Birthdate is required.</div>
+    } @if(userForm.get('name')?.hasError('maxlength')) {
+    <div class="text-danger">* Name must be 20 characters or fewer.</div>
+    } @if(userForm.get('surname')?.hasError('maxlength')) {
+    <div class="text-danger">* Surname must be 20 characters or fewer.</div>
+    } @if(userForm.get('workAddress')?.hasError('maxlength')) {
+    <div class="text-danger">
+      * Work Address must be 100 characters or fewer.
+    </div>
+    } @if(userForm.get('homeAddress')?.hasError('maxlength')) {
+    <div class="text-danger">
+      * Home Address must be 100 characters or fewer.
+    </div>
+    } @if(userForm.get('birthdate')?.hasError('futureDate')) {
+    <div class="text-danger mt-1">Past or present date required.</div>
+    }
+  </div>
+  <div class="buttons-container">
+    <div>
+      <button id="modal-button-edit-save" class="btn btn-secondary" [disabled]="userForm.invalid"
+        (click)="updateUser()">
+        {{ editMode ? "Save" : "Edit" }}
+      </button>
+    </div>
+    <div>
+      <button id="modal-button-delete" class="btn btn-danger" (click)="deleteUser(user.id)">
+        Delete
+      </button>
+    </div>
+  </div>
+</div>
