@@ -1,5 +1,5 @@
-import { deleteUserSuccess, storeUserSuccess, updateUserSuccess } from "./users-store/users.actions";
-import { UsersState } from "./users-store/users.reducers";
+import { deleteUserSuccess, storeUserSuccess, updateUserSuccess } from "../../store/users-store/users.actions"
+import { UsersState } from "../../store/users-store/users.reducers"
 
 export interface UserData {
   id?: number,

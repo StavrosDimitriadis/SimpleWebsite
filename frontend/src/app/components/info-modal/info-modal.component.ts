@@ -1,7 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { AppState, UserData } from '../interfaces';
 import { Store } from '@ngrx/store';
-import { deleteUser, updateUser } from '../users-store/users.actions';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import {
   FormBuilder,
@@ -10,8 +8,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { selectUserById } from '../users-store/users.selectors';
-import { pastOrPresentDate } from '../custom.validators';
+import { AppState, UserData } from '../../shared/models/interfaces';
+import { pastOrPresentDate } from '../../shared/validators/pastOrPresentDate.validator';
+import { selectUserById } from '../../store/users-store/users.selectors';
+import { deleteUser, updateUser } from '../../store/users-store/users.actions';
 
 @Component({
   selector: 'app-info-modal',

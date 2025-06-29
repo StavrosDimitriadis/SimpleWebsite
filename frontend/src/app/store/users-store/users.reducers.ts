@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
-import { UserData } from '../interfaces';
 import { deleteUser, deleteUserSuccess, fetchUsers, fetchUsersSuccess, genericError, storeUser, storeUserSuccess, updateUser, updateUserSuccess } from './users.actions';
+import { UserData } from '../../shared/models/interfaces';
 
 export interface UsersState {
   usersList: UserData[],

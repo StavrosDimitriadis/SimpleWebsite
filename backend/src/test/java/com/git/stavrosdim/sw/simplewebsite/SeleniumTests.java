@@ -17,6 +17,9 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
+import com.git.stavrosdim.sw.simplewebsite.POJOs.User;
+import com.git.stavrosdim.sw.simplewebsite.POMs.DisplayUsersPage;
+import com.git.stavrosdim.sw.simplewebsite.POMs.RegisterUserPage;
 import com.git.stavrosdim.sw.simplewebsite.configs.FrontendConfig;
 
 @SpringBootTest

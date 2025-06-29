@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { storeUser } from '../users-store/users.actions';
-import { pastOrPresentDate } from '../custom.validators';
+import { pastOrPresentDate } from '../../shared/validators/pastOrPresentDate.validator';
+import { storeUser } from '../../store/users-store/users.actions';
 
 @Component({
   selector: 'app-register-user',

@@ -1,6 +1,6 @@
 import { createSelector } from '@ngrx/store';
-import { AppState } from '../interfaces';
 import { UsersState } from './users.reducers';
+import { AppState } from '../../shared/models/interfaces';
 
 export const usersSlice = (state: AppState) => state.users;
 

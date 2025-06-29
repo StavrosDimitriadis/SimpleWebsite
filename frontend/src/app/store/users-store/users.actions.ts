@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { UserData } from '../interfaces';
+import { UserData } from '../../shared/models/interfaces';
 
 export const fetchFirstUsers = createAction(
   '[Users] Fetch First Users'

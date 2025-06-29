@@ -1,14 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AppState, UserData } from '../interfaces';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
-import { selectUsersState } from '../users-store/users.selectors';
-import { InfoModalComponent } from '../info-modal/info-modal.component';
+import { selectUsersState } from '../../store/users-store/users.selectors';
 import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
-import { UsersState } from '../users-store/users.reducers';
-import { fetchFirstUsers, fetchUsers } from '../users-store/users.actions';
+import { UsersState } from '../../store/users-store/users.reducers';
+import { fetchFirstUsers, fetchUsers } from '../../store/users-store/users.actions';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
+import { AppState, UserData } from '../../shared/models/interfaces';
+import { InfoModalComponent } from '../info-modal/info-modal.component';
 
 @Component({
   selector: 'app-display-users',

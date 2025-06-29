@@ -4,11 +4,11 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
-import { routes } from './app.routes';
-import { usersReducer } from './users-store/users.reducers';
-import { UsersEffects } from './users-store/users.effects';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideToastr } from 'ngx-toastr';
+import { UsersEffects } from '../store/users-store/users.effects';
+import { usersReducer } from '../store/users-store/users.reducers';
+import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [

@@ -15,8 +15,8 @@ import {
   updateUser,
   updateUserSuccess,
 } from './users.actions';
-import { NotificationsComponent } from '../notifications/notifications.component';
-import { successMessages } from '../interfaces';
+import { NotificationsComponent } from '../../components/notifications/notifications.component';
+import { successMessages } from '../../shared/models/interfaces';
 
 @Injectable()
 export class UsersEffects {

@@ -1,4 +1,4 @@
-package com.git.stavrosdim.sw.simplewebsite;
+package com.git.stavrosdim.sw.simplewebsite.POJOs;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

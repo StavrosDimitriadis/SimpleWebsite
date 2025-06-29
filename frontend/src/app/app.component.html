@@ -2,8 +2,15 @@
 <div class="loading"></div>
 }
 <div class="nav nav-tabs">
-    <button id="home-button" class="nav-link active" routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page">
+    <button id="home-button" class="nav-link active" routerLink="/home" routerLinkActive="active"
+        ariaCurrentWhenActive="page">
         Home
     </button>
+    <div class="select-lang-dropdown">
+        <select class="nav-link active">
+            <option value="en">English</option>
+            <option value="el">Ελληνικά</option>
+        </select>
+    </div>
 </div>
 <router-outlet></router-outlet>

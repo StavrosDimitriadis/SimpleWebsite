@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { spinnerState } from '../users-store/users.selectors';
-import { AppState } from '../interfaces';
 import { AsyncPipe } from '@angular/common';
+import { AppState } from './shared/models/interfaces';
+import { spinnerState } from './store/users-store/users.selectors';
 
 @Component({
   selector: 'app-root',
