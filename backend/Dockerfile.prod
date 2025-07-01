@@ -1,0 +1,8 @@
+FROM eclipse-temurin:21-jre-alpine
+
+WORKDIR /backend
+
+COPY target/SimpleWebsite-0.0.1-SNAPSHOT.jar ./SimpleWebsite-0.0.1-SNAPSHOT.jar
+COPY certs/ /certs/
+
+ENTRYPOINT ["java", "-jar", "SimpleWebsite-0.0.1-SNAPSHOT.jar"]

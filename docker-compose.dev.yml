@@ -1,6 +1,9 @@
+version: "3.8"
+
 services:
   mysql:
     image: mysql:8
+    container_name: mysql_dev
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
@@ -9,21 +12,33 @@ services:
       - "${DB_LOCAL_PORT}:${DB_CONTAINER_PORT}"
     volumes:
       - mysql-data:/var/lib/mysql
+    networks:
+      - simple-net
 
   backend:
-    build: ./backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    container_name: backend_dev
+    image: backend_dev
     ports:
       - "${BACKEND_LOCAL_PORT}:${BACKEND_CONTAINER_PORT}"
-      - "${LOCALHOST}:${BACKEND_DEBUGGER_LOCAL_PORT}:${BACKEND_DEBUGGER_CONTAINER_PORT}"
+      - "127.0.0.1:${BACKEND_DEBUGGER_LOCAL_PORT}:${BACKEND_DEBUGGER_CONTAINER_PORT}"
     volumes:
       - ./backend:/backend
       - ~/.m2:/root/.m2
     command: mvn spring-boot:run -Dspring-boot.run.jvmArguments="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:${BACKEND_DEBUGGER_CONTAINER_PORT}"
     depends_on:
       - mysql
+    networks:
+      - simple-net
 
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    container_name: frontend_dev
+    image: frontend_dev
     ports:
       - "${FRONTEND_LOCAL_PORT}:${FRONTEND_CONTAINER_PORT}"
     volumes:
@@ -32,6 +47,12 @@ services:
     command: npm run start -- --host 0.0.0.0
     depends_on:
       - backend
+    networks:
+      - simple-net
 
 volumes:
   mysql-data:
+
+networks:
+  simple-net:
+    driver: bridge

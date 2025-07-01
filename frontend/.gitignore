@@ -45,4 +45,4 @@ Thumbs.db
 /certs
 
 # ENV
-src/environment.ts
+src/environments/environment.ts

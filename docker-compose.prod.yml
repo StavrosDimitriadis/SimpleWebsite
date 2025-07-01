@@ -1,0 +1,43 @@
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql_prod
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+    volumes:
+      - mysql-data:/var/lib/mysql
+    ports:
+      - "${DB_LOCAL_PORT}:${DB_CONTAINER_PORT}"
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.prod
+    container_name: backend_prod
+    image: backend_prod
+    ports:
+      - "${BACKEND_LOCAL_PORT}:${BACKEND_CONTAINER_PORT}"
+    command:
+      - java
+      - -jar
+      - SimpleWebsite-0.0.1-SNAPSHOT.jar
+      - --server.ssl.key-store=/certs/keystore.jks
+      - --server.ssl.key-store-password=${KEY_PASSWORD}
+    depends_on:
+      - mysql
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.prod
+    container_name: frontend_prod
+    image: frontend_prod
+    ports:
+      - "${FRONTEND_LOCAL_PORT}:${FRONTEND_NGINX_PORT}"
+    depends_on:
+      - backend
+
+volumes:
+  mysql-data:
