@@ -9,7 +9,8 @@ import lombok.Setter;
 @Setter
 public class FrontendConfig {
 
-    String frontendUrl;
+    String prodUrl;
+    String devUrl;
     String displayUsersUrl;
     String registerUserUrl;
 }

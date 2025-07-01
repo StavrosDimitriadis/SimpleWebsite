@@ -1,8 +1,17 @@
+FROM maven:3.9.5-eclipse-temurin-21 AS jarbuilder
+
+WORKDIR /backend
+
+COPY pom.xml .
+COPY src ./src
+
+RUN mvn clean package -DskipTests
+
 FROM eclipse-temurin:21-jre-alpine
 
 WORKDIR /backend
 
-COPY target/SimpleWebsite-0.0.1-SNAPSHOT.jar ./SimpleWebsite-0.0.1-SNAPSHOT.jar
+COPY --from=jarbuilder /backend/target/SimpleWebsite-0.0.1-SNAPSHOT.jar ./SimpleWebsite-0.0.1-SNAPSHOT.jar
 COPY certs/ /certs/
 
 ENTRYPOINT ["java", "-jar", "SimpleWebsite-0.0.1-SNAPSHOT.jar"]
