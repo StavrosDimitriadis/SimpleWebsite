@@ -45,7 +45,12 @@ export interface AppState {
 }
 
 export const successMessages: Record<string, string> = {
-  [storeUserSuccess.type]: 'User created successfully',
-  [updateUserSuccess.type]: 'User updated successfully',
-  [deleteUserSuccess.type]: 'User deleted successfully',
+  [storeUserSuccess.type]: 'USER_CREATED_SUCCESSFULLY',
+  [updateUserSuccess.type]: 'USER_UPDATED_SUCCESSFULLY',
+  [deleteUserSuccess.type]: 'USER_DELETED_SUCCESSFULLY',
+};
+
+export const LANGUAGES = {
+  English: 'en',
+  Greek: 'el'
 };

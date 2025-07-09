@@ -2,35 +2,35 @@
   <div class="modal-style">
     <table class="table">
       <thead>
-        <tr>
-          <th scope="col">Name</th>
-          <th scope="col">Surname</th>
-          <th scope="col">Gender</th>
-          <th scope="col">Birthdate</th>
-          <th scope="col">Work Address</th>
-          <th scope="col">Home Address</th>
+        <tr class="cell-header-style">
+          <th scope="col">{{ 'NAME' | translate }}</th>
+          <th scope="col">{{ 'SURNAME' | translate }}</th>
+          <th scope="col">{{ 'GENDER' | translate }}</th>
+          <th scope="col">{{ 'BIRTHDATE' | translate }}</th>
+          <th scope="col">{{ 'WORK_ADDRESS' | translate }}</th>
+          <th scope="col">{{ 'HOME_ADDRESS' | translate }}</th>
         </tr>
       </thead>
       <tbody [formGroup]="userForm">
         <tr>
           @if (editMode) {
-          <td><input id="modal-form-input-name" class="form-control" formControlName="name" /></td>
-          <td><input id="modal-form-input-surname" class="form-control" formControlName="surname" /></td>
+          <td><input id="modal-form-input-name" class="custom-cell-style" formControlName="name" /></td>
+          <td><input id="modal-form-input-surname" class="custom-cell-style" formControlName="surname" /></td>
           <td>
-            <select id="modal-form-input-gender" class="form-control" formControlName="gender">
-              <option value="M">M</option>
-              <option value="F">F</option>
+            <select id="modal-form-input-gender" class="custom-cell-style" formControlName="gender">
+              <option value="M">{{ 'FIRST_LETTER_FOR_GENDER_M' | translate }}</option>
+              <option value="F">{{ 'FIRST_LETTER_FOR_GENDER_F' | translate }}</option>
             </select>
           </td>
           <td>
-            <input id="modal-form-input-birthdate" class="form-control" formControlName="birthdate" type="date" />
+            <input id="modal-form-input-birthdate" class="custom-cell-style" formControlName="birthdate" type="date" />
           </td>
-          <td><input id="modal-form-input-workAddress" class="form-control" formControlName="workAddress" /></td>
-          <td><input id="modal-form-input-homeAddress" class="form-control" formControlName="homeAddress" /></td>
+          <td><input id="modal-form-input-workAddress" class="custom-cell-style" formControlName="workAddress" /></td>
+          <td><input id="modal-form-input-homeAddress" class="custom-cell-style" formControlName="homeAddress" /></td>
           } @else {
           <td id="modal-form-name">{{ user.name }}</td>
           <td id="modal-form-surname">{{ user.surname }}</td>
-          <td id="modal-form-gender">{{ user.gender }}</td>
+          <td id="modal-form-gender">{{ ('FIRST_LETTER_FOR_GENDER_'+user.gender) | translate }}</td>
           <td id="modal-form-birthdate">{{ user.birthdate }}</td>
           <td id="modal-form-workAddress">{{ user.workAddress }}</td>
           <td id="modal-form-homeAddress">{{ user.homeAddress }}</td>
@@ -41,37 +41,37 @@
   </div>
   <div class="error-messages-container">
     @if(userForm.get('name')?.hasError('required')) {
-    <div class="text-danger">* Name is required.</div>
+    <div class="text-danger">* {{ 'FIELD_NAME_REQUIRED' | translate }}</div>
     } @if(userForm.get('surname')?.hasError('required')) {
-    <div class="text-danger">* Surname is required.</div>
+    <div class="text-danger">* {{ 'FIELD_SURNAME_REQUIRED' | translate }}</div>
     } @if(userForm.get('birthdate')?.hasError('required')) {
-    <div class="text-danger">* Birthdate is required.</div>
+    <div class="text-danger">* {{ 'FIELD_BIRTHDATE_REQUIRED' | translate }}</div>
     } @if(userForm.get('name')?.hasError('maxlength')) {
-    <div class="text-danger">* Name must be 20 characters or fewer.</div>
+    <div class="text-danger">* {{ 'NAME_MAX_LENGTH' | translate }}</div>
     } @if(userForm.get('surname')?.hasError('maxlength')) {
-    <div class="text-danger">* Surname must be 20 characters or fewer.</div>
+    <div class="text-danger">* {{ 'SURNAME_MAX_LENGTH' | translate }}</div>
     } @if(userForm.get('workAddress')?.hasError('maxlength')) {
     <div class="text-danger">
-      * Work Address must be 100 characters or fewer.
+      * {{ 'WORK_ADDRESS_MAX_LENGTH' | translate }}
     </div>
     } @if(userForm.get('homeAddress')?.hasError('maxlength')) {
     <div class="text-danger">
-      * Home Address must be 100 characters or fewer.
+      * {{ 'HOME_ADDRESS_MAX_LENGTH' | translate }}
     </div>
     } @if(userForm.get('birthdate')?.hasError('futureDate')) {
-    <div class="text-danger mt-1">Past or present date required.</div>
+    <div class="text-danger">* {{ 'PAST_OR_PRESENT_DATE_REQUIRED' | translate }}</div>
     }
   </div>
   <div class="buttons-container">
     <div>
       <button id="modal-button-edit-save" class="btn btn-secondary" [disabled]="userForm.invalid"
         (click)="updateUser()">
-        {{ editMode ? "Save" : "Edit" }}
+        {{ editMode ? ('SAVE' | translate) : ('EDIT' | translate) }}
       </button>
     </div>
     <div>
       <button id="modal-button-delete" class="btn btn-danger" (click)="deleteUser(user.id)">
-        Delete
+        {{ 'DELETE' | translate }}
       </button>
     </div>
   </div>

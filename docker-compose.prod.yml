@@ -8,8 +8,6 @@ services:
       MYSQL_DATABASE: ${DB_NAME}
     volumes:
       - mysql-data:/var/lib/mysql
-    ports:
-      - "${DB_LOCAL_PORT}:${DB_CONTAINER_PORT}"
 
   backend:
     build:

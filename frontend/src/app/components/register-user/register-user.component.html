@@ -1,72 +1,63 @@
 <div class="container mt-5" style="padding-bottom: 20px">
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <h3 class="header-style">Register New User</h3>
-
+    <h3 class="header-style">{{ 'REGISTER_NEW_USER' | translate }}</h3>
     <div class="mb-3">
-      <label class="form-label">Name *</label>
+      <label class="form-label">{{ 'NAME' | translate }} *</label>
       <input id="form-name" class="form-control" type="text" formControlName="name" />
-      @if(registerForm.get('name')?.touched &&
-      registerForm.get('name')?.hasError('required')) {
-      <div class="text-danger mt-1">Field is required.</div>
-      } @if(registerForm.get('name')?.hasError('maxlength')) {
-      <div class="text-danger mt-1">Maximum 20 characters allowed.</div>
+      @if(registerForm.get('name')?.touched && registerForm.get('name')?.hasError('required')) {
+      <div class="text-danger mt-1">{{ 'FIELD_IS_REQUIRED' | translate }}</div>
+      }
+      @if(registerForm.get('name')?.hasError('maxlength')) {
+      <div class="text-danger mt-1">{{ 'MAX_20_CHARACTERS_ALLOWED' | translate }}</div>
       }
     </div>
-
     <div class="mb-3">
-      <label class="form-label">Surname *</label>
+      <label class="form-label">{{ 'SURNAME' | translate }} *</label>
       <input id="form-surname" class="form-control" type="text" formControlName="surname" />
-      @if(registerForm.get('surname')?.touched &&
-      registerForm.get('surname')?.hasError('required')) {
-      <div class="text-danger mt-1">Field is required.</div>
-      } @if(registerForm.get('surname')?.hasError('maxlength')) {
-      <div class="text-danger mt-1">Maximum 20 characters allowed.</div>
+      @if(registerForm.get('surname')?.touched && registerForm.get('surname')?.hasError('required')) {
+      <div class="text-danger mt-1">{{ 'FIELD_IS_REQUIRED' | translate }}</div>
+      }
+      @if(registerForm.get('surname')?.hasError('maxlength')) {
+      <div class="text-danger mt-1">{{ 'MAX_20_CHARACTERS_ALLOWED' | translate }}</div>
       }
     </div>
-
     <div class="mb-3">
-      <label class="form-label">Gender *</label>
-      <select id="form-gender" class="form-control" formControlName="gender">
-        <option value="">Select Gender</option>
-        <option value="M">Male</option>
-        <option value="F">Female</option>
+      <label class="form-label">{{ 'GENDER' | translate }} *</label>
+      <select id="form-gender" class="form-select" formControlName="gender">
+        <option value="">{{ 'SELECT_GENDER' | translate }}</option>
+        <option value="M">{{ 'MALE' | translate }}</option>
+        <option value="F">{{ 'FEMALE' | translate }}</option>
       </select>
-      @if(registerForm.get('gender')?.touched &&
-      registerForm.get('gender')?.hasError('required')) {
-      <div class="text-danger mt-1">Field is required.</div>
+      @if(registerForm.get('gender')?.touched && registerForm.get('gender')?.hasError('required')) {
+      <div class="text-danger mt-1">{{ 'FIELD_IS_REQUIRED' | translate }}</div>
       }
     </div>
-
     <div class="mb-3">
-      <label class="form-label">Birthdate *</label>
+      <label class="form-label">{{ 'BIRTHDATE' | translate }} *</label>
       <input id="form-birthdate" class="form-control" type="date" formControlName="birthdate" />
-      @if(registerForm.get('birthdate')?.touched &&
-      registerForm.get('birthdate')?.hasError('required')) {
-      <div class="text-danger mt-1">Field is required.</div>
+      @if(registerForm.get('birthdate')?.touched && registerForm.get('birthdate')?.hasError('required')) {
+      <div class="text-danger mt-1">{{ 'FIELD_IS_REQUIRED' | translate }}</div>
       }
       @if(registerForm.get('birthdate')?.hasError('futureDate')) {
-      <div class="text-danger mt-1">Past or present date required.</div>
+      <div class="text-danger mt-1">{{ 'PAST_OR_PRESENT_DATE_REQUIRED' | translate }}</div>
       }
     </div>
-
     <div class="mb-3">
-      <label class="form-label">Work Address</label>
+      <label class="form-label">{{ 'WORK_ADDRESS' | translate }}</label>
       <textarea id="form-workAddress" class="form-control" formControlName="workAddress"></textarea>
       @if(registerForm.get('workAddress')?.hasError('maxlength')) {
-      <div class="text-danger mt-1">Maximum 100 characters allowed.</div>
+      <div class="text-danger mt-1">{{ 'MAX_100_CHARACTERS_ALLOWED' | translate }}</div>
       }
     </div>
-
     <div class="mb-3">
-      <label class="form-label">Home Address</label>
+      <label class="form-label">{{ 'HOME_ADDRESS' | translate }}</label>
       <textarea id="form-homeAddress" class="form-control" formControlName="homeAddress"></textarea>
       @if(registerForm.get('homeAddress')?.hasError('maxlength')) {
-      <div class="text-danger mt-1">Maximum 100 characters allowed.</div>
+      <div class="text-danger mt-1">{{ 'MAX_100_CHARACTERS_ALLOWED' | translate }}</div>
       }
     </div>
-
     <button id="button-submit" class="btn btn-primary" [disabled]="registerForm.invalid">
-      Submit
+      {{ 'SUBMIT' | translate }}
     </button>
   </form>
 </div>

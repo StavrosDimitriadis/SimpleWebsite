@@ -3,12 +3,13 @@ import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angula
 import { Store } from '@ngrx/store';
 import { pastOrPresentDate } from '../../shared/validators/pastOrPresentDate.validator';
 import { storeUser } from '../../store/users-store/users.actions';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-register-user',
   templateUrl: './register-user.component.html',
   styleUrls: ['./register-user.component.css'],
-  imports: [ReactiveFormsModule]
+  imports: [ReactiveFormsModule, TranslateModule]
 })
 
 export class RegisterUserComponent {

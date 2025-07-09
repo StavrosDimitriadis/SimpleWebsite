@@ -10,28 +10,28 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Surname</th>
+        <th scope="col">{{ "NAME" | translate }}</th>
+        <th scope="col">{{ "SURNAME" | translate }}</th>
       </tr>
     </thead>
     <tbody id="display-users-table">
-      @if(usersState.usersList.length) { @for (user of usersState.usersList ; track
-      $index) {
+      @if(usersState.usersList.length) { @for (user of usersState.usersList ;
+      track $index) {
       <tr class="user-row" (click)="openModal(user)">
         <th scope="row">{{ $index + 1 }}</th>
         <td>{{ user.name }}</td>
         <td>{{ user.surname }}</td>
       </tr>
       } } @else {
-        <!-- condition for the case usersList is empty -->
-        @if (!this.usersState.isLastPage) {
-          <!-- skeleton loader for first data -->
-          <ng-container *ngTemplateOutlet="loadingRows"></ng-container>
-        }
-      }
+      <!-- condition for the case usersList is empty -->
+      @if (!this.usersState.isLastPage) {
+      <!-- skeleton loader for first data -->
+      <ng-container *ngTemplateOutlet="loadingRows"></ng-container>
+      } }
+
       <!-- skeleton loader for pagination -->
       @if(usersState.loadingRows){
-        <ng-container *ngTemplateOutlet="loadingRows"></ng-container>
+      <ng-container *ngTemplateOutlet="loadingRows"></ng-container>
       }
     </tbody>
   </table>

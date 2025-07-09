@@ -118,7 +118,7 @@ export class UsersEffects {
       this.actions$.pipe(
         ofType(genericError),
         tap(() => {
-          this.notificationService.error('Error', 'An unexpected error occured');
+          this.notificationService.error('ERROR_TITLE_MESSAGE', 'AN_UNEXPECTED_ERROR_OCCURED');
         })
       ),
     { dispatch: false }
@@ -132,10 +132,9 @@ export class UsersEffects {
         deleteUserSuccess
       ),
       tap(action => {
-        this.notificationService.success('Success', successMessages[action.type]);
+        this.notificationService.success('SUCCESS_TITLE_MESSAGE', successMessages[action.type]);
       })
     ),
     { dispatch: false }
   );
 }
-

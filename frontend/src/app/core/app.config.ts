@@ -9,6 +9,7 @@ import { provideToastr } from 'ngx-toastr';
 import { UsersEffects } from '../store/users-store/users.effects';
 import { usersReducer } from '../store/users-store/users.reducers';
 import { routes } from './app.routes';
+import { provideTranslate } from './translate.provider';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -21,6 +22,7 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     provideToastr({
       timeOut: 3000, positionClass: 'toast-bottom-right', preventDuplicates: true, closeButton: true
-    })
+    }),
+    provideTranslate()
   ]
 };

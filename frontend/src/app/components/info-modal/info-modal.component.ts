@@ -12,10 +12,11 @@ import { AppState, UserData } from '../../shared/models/interfaces';
 import { pastOrPresentDate } from '../../shared/validators/pastOrPresentDate.validator';
 import { selectUserById } from '../../store/users-store/users.selectors';
 import { deleteUser, updateUser } from '../../store/users-store/users.actions';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-info-modal',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, TranslateModule],
   templateUrl: './info-modal.component.html',
   styleUrl: './info-modal.component.css',
 })

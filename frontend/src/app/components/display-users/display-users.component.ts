@@ -9,10 +9,11 @@ import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { AppState, UserData } from '../../shared/models/interfaces';
 import { InfoModalComponent } from '../info-modal/info-modal.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-display-users',
-  imports: [CommonModule, InfiniteScrollDirective],
+  imports: [CommonModule, InfiniteScrollDirective, TranslateModule],
   templateUrl: './display-users.component.html',
   styleUrl: './display-users.component.css'
 })

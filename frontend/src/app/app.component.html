@@ -4,13 +4,18 @@
 <div class="nav nav-tabs">
     <button id="home-button" class="nav-link active" routerLink="/home" routerLinkActive="active"
         ariaCurrentWhenActive="page">
-        Home
+        {{ 'HOME' | translate }}
     </button>
-    <div class="select-lang-dropdown">
-        <select class="nav-link active">
-            <option value="en">English</option>
-            <option value="el">Ελληνικά</option>
-        </select>
+    <div class="lang-container">
+        <div class="nav-link active">
+            <div class="lang-items">
+                <img src="assets/icons/globe.svg" alt="lang-icon" class="lang-icon-style" />
+                <select class="form-select" [(ngModel)]="selectedLang" (ngModelChange)="switchLang()">
+                    <option value="en">English</option>
+                    <option value="el">Ελληνικά</option>
+                </select>
+            </div>
+        </div>
     </div>
 </div>
 <router-outlet></router-outlet>
